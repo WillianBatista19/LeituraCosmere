@@ -58,6 +58,10 @@
             border-radius: 5px;
         }
 
+        .acordeao-conteudo p:not(:last-child) {
+            margin-bottom: 16px; /* Defina o espaçamento desejado */
+        }
+
         .acordeao-botao.ativo + .acordeao-conteudo {
             display: block;
         }
