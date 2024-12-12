@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leitura Coletiva Cosmere</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://SEU-DOMINIO.com/">
+    <meta property="og:title" content="Leitura Coletiva Cosmere">
+    <meta property="og:description" content="Grupo de leitura dedicado aos livros do Cosmere de Brandon Sanderson">
+    <meta property="og:image" content="images/logo.webp">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://SEU-DOMINIO.com/">
+    <meta name="twitter:title" content="Leitura Coletiva Cosmere">
+    <meta name="twitter:description" content="Grupo de leitura dedicado aos livros do Cosmere de Brandon Sanderson">
+    <meta name="twitter:image" content="images/logo.webp">
+</head>
+<body>
+    <div class="banner-lc" id="bannerLC">
+        <div class="banner-overlay">
+            <div class="banner-conteudo">
+                <h1 id="tituloLivroAtual">Warbreaker</h1>
+                <p>Leitura Coletiva Atual</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <section class="secao cronograma">
+            <h2 class="secao-titulo">Cronograma de Leitura</h2>
+            <table id="cronogramaLeitura" style="width:100%; color: var(--cor-texto-primaria);">
+                <!-- Cronograma será preenchido via JavaScript -->
+            </table>
+            <a href="resumos/warbreaker.html" class="botao-cronograma">Ver Resumos</a>
+        </section>
+
+        <section class="secao">
+            <h2 class="secao-titulo">Leituras Coletivas Anteriores</h2>
+            <div class="grid-livros" id="lcAnteriores">
+                <!-- Livros anteriores serão preenchidos via JavaScript -->
+            </div>
+        </section>
+
+        <section class="secao">
+            <h2 class="secao-titulo">Ordem de Leitura Cosmere</h2>
+            <div class="grid-livros" id="ordemLeitura">
+                <!-- Ordem de leitura será preenchida via JavaScript -->
+            </div>
+        </section>
+    </div>
+
+    <div id="modalLivro" class="modal">
+        <div class="modal-conteudo">
+            <span class="botao-fechar">&times;</span>
+            <div id="conteudoModal"></div>
+        </div>
+    </div>
+
+    <script>
+        const livros = {
+            atual: {
+                titulo: 'Warbreaker',
+                autor: 'Brandon Sanderson',
+                capa: 'https://m.media-amazon.com/images/I/81F956bHBgL._SL1500_.jpg',
+                sinopse: 'Um romance standalone da Cosmere que explora magia baseada em cores e almas.',
+                banner: './images/BGWarbreaker.webp',
+            },
+            anteriores: [
+                {
+                    titulo: 'Palavras de Radiância',
+                    capa: 'https://m.media-amazon.com/images/I/812AFi3YPyL._SL1500_.jpg',
+                    sinopse: 'Segundo livro da série Arquivo das Tempestades.',
+                    temResumo: false
+                },
+                {
+                    titulo: 'O Caminho dos Reis',
+                    capa: 'https://m.media-amazon.com/images/I/71wqAmLlK4L._SL1500_.jpg',
+                    sinopse: 'Primeiro livro da série Arquivo das Tempestades.',
+                    temResumo: true
+                },
+            ],
+            ordemLeitura: [
+                { 
+                    titulo: 'O império final', 
+                    capa: 'https://m.media-amazon.com/images/I/91YMAbLoOVL._SL1500_.jpg',
+                    sinopse: 'Primeiro livro da trilogia Mistborn',
+                    traduzido: true
+                },
+                { 
+                    titulo: 'O poço da ascensão', 
+                    capa: 'https://m.media-amazon.com/images/I/91ncrOvnjnL._SL1500_.jpg',
+                    sinopse: 'Segundo livro da trilogia Mistborn',
+                    traduzido: true
+                },
+                { 
+                    titulo: 'O heróis das eras', 
+                    capa: 'https://m.media-amazon.com/images/I/61pTigfMMaL._SL1000_.jpg',
+                    sinopse: 'Terceiro livro da trilogia Mistborn',
+                    traduzido: true
+                },
+                { 
+                    titulo: 'The Eleventh Metal', 
+                    capa: 'https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1659766270i/22823333.jpg',
+                    sinopse: 'Conto presente em: Arcanum Unbounded: The Cosmere Collection.',
+                    traduzido: false 
+                },
+                { 
+                    titulo: 'Elantris', 
+                    capa: 'https://m.media-amazon.com/images/I/51vXa1V2pbL.jpg',
+                    sinopse: 'Um romance standalone onde uma cidade mágica em decadência é o cenário para uma luta pela sobrevivência e redenção.',
+                    traduzido: true 
+                },
+                { 
+                    titulo: 'The Hope of Elantris', 
+                    capa: 'https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1661025414i/10852065.jpg',
+                    sinopse: 'Conto: Elantris #1.5',
+                    traduzido: false 
+                },
+                { 
+                    titulo: "The Emperor's Soul" , 
+                    capa: 'https://m.media-amazon.com/images/I/91ibY7Ik4wL._SL1500_.jpg',
+                    sinopse: 'Conto: Elantris',
+                    traduzido: false 
+                },
+                { 
+                    titulo: 'Warbreaker: O sopro dos deuses', 
+                    capa: 'https://m.media-amazon.com/images/I/81F956bHBgL._SL1500_.jpg',
+                    sinopse: 'Um romance standalone da Cosmere que explora magia baseada em cores e almas.',
+                    traduzido: true,
+                    temResumo: true 
+                },
+                { 
+                    titulo: 'A liga da lei', 
+                    capa: 'https://m.media-amazon.com/images/I/71rO9YgTk1L._SL1000_.jpg',
+                    sinopse: 'Primeiro livro da segunda era de Mistborn',
+                    traduzido: true
+                },
+                { 
+                    titulo: 'As sombras de si mesmo', 
+                    capa: 'https://m.media-amazon.com/images/I/71bjBM42gvL._SL1000_.jpg',
+                    sinopse: 'Segundo livro da segunda era de Mistborn',
+                    traduzido: true
+                },
+                { 
+                    titulo: 'Os braceletes da perdição', 
+                    capa: 'https://m.media-amazon.com/images/I/71XRJX79bDL._SL1000_.jpg',
+                    sinopse: 'Terceiro livro da segunda era de Mistborn',
+                    traduzido: true
+                },
+                { 
+                    titulo: 'Allomancer Jak and the Pits of Eltania', 
+                    capa: 'https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1652030521i/61055022.jpg',
+                    sinopse: 'Conto presente em: Arcanum Unbounded: The Cosmere Collection.',
+                    traduzido: false
+                },
+                { 
+                    titulo: 'Mistborn: Secret History', 
+                    capa: 'https://m.media-amazon.com/images/I/819DS1OtyzL._SL1500_.jpg',
+                    sinopse: 'Conto: Mistborn #7.5',
+                    traduzido: false
+                },
+                { 
+                    titulo: 'Shadows for Silence in the Forests of Hell', 
+                    capa: 'https://m.media-amazon.com/images/I/81-TqssCMmL._SL1500_.jpg',
+                    sinopse: 'Conto presente em: Arcanum Unbounded: The Cosmere Collection.',
+                    traduzido: false
+                },
+                { 
+                    titulo: 'White Sand', 
+                    capa: 'https://m.media-amazon.com/images/I/81-A4u-rT1L._SL1500_.jpg',
+                    sinopse: 'Uma história em quadrinhos do Cosmere, ambientada em um mundo desértico.',
+                    traduzido: false
+                },
+                { 
+                    titulo: 'Sixth of the Dusk', 
+                    capa: 'https://m.media-amazon.com/images/I/81saovWy0JL._SL1500_.jpg',
+                    sinopse: 'Um conto standalone do Cosmere.',
+                    traduzido: false
+                },
+                {
+                    titulo: 'O Caminho dos Reis',
+                    capa: 'https://m.media-amazon.com/images/I/71wqAmLlK4L._SL1500_.jpg',
+                    sinopse: 'Primeiro livro da série Arquivo das Tempestades.',
+                    traduzido: true 
+                },
+                {
+                    titulo: 'Palavras de Radiância',
+                    capa: 'https://m.media-amazon.com/images/I/812AFi3YPyL._SL1500_.jpg',
+                    sinopse: 'Segundo livro da série Arquivo das Tempestades.',
+                    traduzido: true 
+                },
+                {
+                    titulo: 'Edgedancer',
+                    capa: 'https://m.media-amazon.com/images/I/81SuJQI8uNL._SL1500_.jpg',
+                    sinopse: 'The Stormlight Archive #2.5',
+                    traduzido: false
+                },
+                {
+                    titulo: 'Sacramentadora',
+                    capa: 'https://m.media-amazon.com/images/I/81YyIxG2wyL._SL1500_.jpg',
+                    sinopse: 'Terceiro livro da série Arquivo das Tempestades.',
+                    traduzido: true 
+                },
+                {
+                    titulo: 'Dawnshard',
+                    capa: 'https://m.media-amazon.com/images/I/81Ox9WrOojL._SL1500_.jpg',
+                    sinopse: 'The Stormlight Archive #3.5',
+                    traduzido: false
+                },
+                {
+                    titulo: 'Rhythm of War',
+                    capa: 'https://m.media-amazon.com/images/I/81ZR25hH7eL._SL1500_.jpg',
+                    sinopse: 'Quarto livro da série Arquivo das Tempestades.',
+                    traduzido: false
+                },
+                { 
+                    titulo: 'The Lost Metal', 
+                    capa: 'https://m.media-amazon.com/images/I/91De3EgfmkL._SL1500_.jpg',
+                    sinopse: 'Quarto livro da segunda era de Mistborn',
+                    traduzido: false
+                },
+                { 
+                    titulo: 'Tress', 
+                    capa: 'https://m.media-amazon.com/images/I/81z2EUQyBtL._SL1500_.jpg',
+                    sinopse: 'Projeto Secreto #1',
+                    traduzido: true 
+                },
+                { 
+                    titulo: 'Yumi and the Nightmare Painter', 
+                    capa: 'https://m.media-amazon.com/images/I/71N02MmBDxL._SL1500_.jpg',
+                    sinopse: 'Projeto Secreto #3',
+                    traduzido: false
+                },
+                { 
+                    titulo: 'The Sunlit Man', 
+                    capa: 'https://m.media-amazon.com/images/I/71M4MAuSIiL._SL1500_.jpg',
+                    sinopse: 'Projeto Secreto #4',
+                    traduzido: false 
+                },
+                {
+                    titulo: 'Wind and Truth',
+                    capa: 'https://m.media-amazon.com/images/I/81oQNU2eoPL._SL1500_.jpg',
+                    sinopse: 'Quinto livro da série Arquivo das Tempestades.',
+                    traduzido: false
+                },
+                { 
+                    titulo: 'Isles of the Emberdark', 
+                    capa: 'https://uploads.coppermind.net/thumb/EmberdarkCover.jpg/1200px-EmberdarkCover.jpg',
+                    sinopse: 'Projeto Secreto #5',
+                    traduzido: false 
+                },
+            ]
+        };
+
+        const cronograma = [
+            { 
+                semana: 1, 
+                paginas: '1-100', 
+                datas: '02/12 - 07/12',
+                tema: 'Introdução ao mundo de Warbreaker'
+            },
+            { 
+                semana: 2, 
+                paginas: '101-203', 
+                datas: '09/12 - 14/12',
+                tema: 'Desenvolvimento dos personagens - Atual'
+            },
+            { 
+                semana: 3, 
+                paginas: '204-309', 
+                datas: '16/02 - 21/02',
+                tema: 'Em breve'
+            },
+            { 
+                semana: 4, 
+                paginas: '310-410', 
+                datas: '23/12 - 28/12',
+                tema: 'Em Breve'
+            },
+            { 
+                semana: 5, 
+                paginas: '411-502', 
+                datas: '30/12 - 04/01',
+                tema: 'Em breve'
+            },
+            { 
+                semana: 6, 
+                paginas: '503-600', 
+                datas: '06/01 - 11/01',
+                tema: 'Em breve'
+            },
+            { 
+                semana: 7, 
+                paginas: '601-692', 
+                datas: '13/01 - 18/01',
+                tema: 'Final'
+            },
+        ];
+
+        // Configurar banner
+        function configurarBanner() {
+            const banner = document.getElementById('bannerLC');
+            banner.style.backgroundImage = `url('${livros.atual.banner}')`;
+            document.getElementById('tituloLivroAtual').textContent = livros.atual.titulo;
+        }
+
+        // Preencher cronograma
+        function preencherCronograma() {
+            const tabela = document.getElementById('cronogramaLeitura');
+            tabela.innerHTML = `
+                <tr style="background-color: var(--cor-destaque);">
+                    <th>Semana</th>
+                    <th>Páginas</th>
+                    <th>Datas</th>
+                    <th>Tema</th>
+                </tr>
+            `;
+            
+            cronograma.forEach(semana => {
+                const linha = tabela.insertRow();
+                linha.innerHTML = `
+                    <td>${semana.semana}</td>
+                    <td>${semana.paginas}</td>
+                    <td>${semana.datas}</td>
+                    <td>${semana.tema}</td>
+                `;
+            });
+        }
+
+        function criarGridLivros(containerId, livros, comTraduzido = false) {
+        const container = document.getElementById(containerId);
+        container.innerHTML = ''; // Limpar o container
+
+        // Determinar o número de livros a exibir com base no tamanho da tela
+        const livrosVisiveis = window.innerWidth > 768 ? livros : livros.slice(0, 3);
+
+        // Exibir os livros
+        livrosVisiveis.forEach(livro => {
+            const cardLivro = document.createElement('div');
+            cardLivro.classList.add('card-livro');
+            if (comTraduzido && !livro.traduzido) {
+                cardLivro.classList.add('grayscale');
+            }
+
+            const conteudoCard = `
+                <img src="${livro.capa}" alt="${livro.titulo}">
+                <div class="card-livro-info">
+                    <h3>${livro.titulo}</h3>
+                    ${comTraduzido ? 
+                        `<p>${livro.traduzido ? 'Traduzido' : 'Não Traduzido'}</p>` : 
+                        ''
+                    }
+                </div>
+            `;
+            
+            cardLivro.innerHTML = conteudoCard;
+            cardLivro.addEventListener('click', () => abrirModalLivro(livro));
+            container.appendChild(cardLivro);
+        });
+
+        // Exibir o botão "Ver mais" apenas se houver mais de 3 livros e estiver em mobile
+        if (livros.length > 3 && window.innerWidth <= 768) {
+            const botaoVerMais = document.createElement('button');
+            botaoVerMais.classList.add('botao-ver-mais');
+            botaoVerMais.textContent = 'Ver mais';
+            botaoVerMais.addEventListener('click', () => mostrarMaisLivros(containerId, livros, 3, comTraduzido));
+            container.appendChild(botaoVerMais);
+        }
+    }
+
+        // Função para mostrar mais livros ao clicar no botão
+        function mostrarMaisLivros(containerId, livros, indiceInicial, comTraduzido) {
+            const container = document.getElementById(containerId);
+            const livrosVisiveis = livros.slice(0, indiceInicial + 3); // Mostrar mais 3 livros
+            container.innerHTML = ''; // Limpar o container
+
+            // Exibir os livros atualizados
+            livrosVisiveis.forEach(livro => {
+                const cardLivro = document.createElement('div');
+                cardLivro.classList.add('card-livro');
+                if (comTraduzido && !livro.traduzido) {
+                    cardLivro.classList.add('grayscale');
+                }
+
+                const conteudoCard = `
+                    <img src="${livro.capa}" alt="${livro.titulo}">
+                    <div class="card-livro-info">
+                        <h3>${livro.titulo}</h3>
+                        ${comTraduzido ? 
+                            `<p>${livro.traduzido ? 'Traduzido' : 'Não Traduzido'}</p>` : 
+                            ''
+                        }
+                    </div>
+                `;
+                
+                cardLivro.innerHTML = conteudoCard;
+                cardLivro.addEventListener('click', () => abrirModalLivro(livro));
+                container.appendChild(cardLivro);
+            });
+
+            // Exibir novamente o botão "Ver mais" se houver mais livros e estiver em mobile
+            if (livros.length > livrosVisiveis.length && window.innerWidth <= 768) {
+                const botaoVerMais = document.createElement('button');
+                botaoVerMais.classList.add('botao-ver-mais');
+                botaoVerMais.textContent = 'Ver mais';
+                botaoVerMais.addEventListener('click', () => mostrarMaisLivros(containerId, livros, livrosVisiveis.length, comTraduzido));
+                container.appendChild(botaoVerMais);
+            }
+        }
+
+        // Abrir modal com detalhes do livro
+        function abrirModalLivro(livro) {
+            const modal = document.getElementById('modalLivro');
+            const conteudoModal = document.getElementById('conteudoModal');
+
+            // HTML do modal com botão condicional
+            const botoesAcao = livro.temResumo 
+                ? `<div class="modal-livro-acoes">
+                        <button class="botao-ver-resumos" onclick="irParaPaginaResumos('${livro.titulo}')">
+                            Ver Resumos dos Debates
+                        </button>
+                </div>` 
+                : '';
+
+            conteudoModal.innerHTML = `
+                <div class="modal-livro-detalhes">
+                    <div class="modal-livro-header">
+                        <img src="${livro.capa}" alt="${livro.titulo}" class="modal-livro-capa">
+                        <div class="modal-livro-info">
+                            <h2>${livro.titulo}</h2>
+                            <p>${livro.autor || 'Brandon Sanderson'}</p>
+                        </div>
+                    </div>
+                    <div class="modal-livro-sinopse">
+                        <p>${livro.sinopse}</p>
+                    </div>
+                    ${botoesAcao}
+                </div>
+            `;
+
+            modal.style.display = 'block';
+
+            document.body.style.overflow = 'hidden'; // Bloqueia o scroll da página
+
+            // Adicionando event listener para fechar modal
+            const botaoFechar = document.querySelector('.botao-fechar');
+            botaoFechar.onclick = function() {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+
+            // Novo: Fechar modal ao clicar fora do conteúdo
+            modal.onclick = function(event) {
+                if (event.target === modal) {
+                    modal.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                }
+            }
+        }
+
+        function irParaPaginaResumos(livro) {
+            // Converte o título para formato de URL
+            const nomeArquivo = livro.toLowerCase()
+                .normalize('NFD')           // Normaliza caracteres especiais
+                .replace(/[\u0300-\u036f]/g, '') // Remove acentos
+                .replace(/\s+/g, '-')        // Substitui espaços por hífens
+                .replace(/[^a-z0-9-]/g, ''); // Remove caracteres que não sejam letras, números ou hífens
+
+            // Salva o título selecionado no localStorage
+            localStorage.setItem('livroSelecionado', livro);
+
+            // Redireciona para a página de resumos
+            window.location.href = `resumos/${nomeArquivo}.html`;
+        }
+        
+        // Inicializar página
+        window.onload = function() {
+            configurarBanner();
+            preencherCronograma();
+            criarGridLivros('lcAnteriores', livros.anteriores);
+            criarGridLivros('ordemLeitura', livros.ordemLeitura, true);
+        }
+    </script>
+</body>
+</html>

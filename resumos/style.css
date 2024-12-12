@@ -1,0 +1,168 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Merriweather:wght@300;400;700&display=swap');
+
+        :root {
+            --cor-fundo: #1a1a2e;
+            --cor-texto-primaria: #e0e0e0;
+            --cor-destaque: #4a4e69;
+            --cor-secundaria: #22223b;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Merriweather', serif;
+            background-color: var(--cor-fundo);
+            color: var(--cor-texto-primaria);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .secao-titulo {
+            text-align: center;
+            font-family: 'Cinzel', serif;
+            margin-bottom: 30px;
+            color: var(--cor-texto-primaria);
+        }
+
+        .acordeao {
+            margin-bottom: 15px;
+        }
+
+        .acordeao-botao {
+            background-color: var(--cor-destaque);
+            color: var(--cor-texto-primaria);
+            border: none;
+            padding: 15px;
+            width: 100%;
+            text-align: left;
+            outline: none;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .acordeao-conteudo {
+            background-color: var(--cor-secundaria);
+            display: none;
+            overflow: hidden;
+            padding: 15px;
+            border-radius: 5px;
+        }
+
+        .acordeao-botao.ativo + .acordeao-conteudo {
+            display: block;
+        }
+
+        .container-resumos {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Estilo para o banner */
+        .banner-lc {
+            position: relative;
+            height: 300px; /* Ajuste conforme necessário */
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 30px; /* Espaço abaixo do banner */
+        }
+        
+        .banner-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6); /* Sobreposição semitransparente */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .banner-conteudo h1 {
+            color: white;
+            font-size: 3rem;
+            font-family: 'Cinzel', serif;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+
+        /* Estilo para o conteúdo da página */
+        .container-resumos {
+            padding: 20px;
+            margin-bottom: 100px; /* Garante que o botão não sobreponha o conteúdo */
+        }
+
+        /* Estilo para o botão de voltar */
+        .botao-cronograma {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #6b3c27;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-family: 'Cinzel', serif;
+            text-align: center;
+            margin: 40px auto 0; /* Centraliza o botão */
+            display: block; /* Torna o botão um bloco para centralizar */
+            width: fit-content; /* Ajusta o tamanho do botão conforme o conteúdo */
+        }
+
+        /* Efeito hover no botão */
+        .botao-cronograma:hover {
+            background-color: #9a5b3e;
+        }
+
+        /* Media Queries para dispositivos móveis */
+        @media (max-width: 768px) {
+            /* Ajuste no título */
+            .secao-titulo {
+                font-size: 1.5rem;
+                padding: 0 10px;
+            }
+
+            /* Ajuste no conteúdo */
+            .container-resumos {
+                padding: 15px;
+            }
+
+            /* Ajuste no banner */
+            .banner-lc {
+                height: 250px; /* Reduz a altura do banner para mobile */
+            }
+
+            .banner-conteudo h1 {
+                font-size: 2rem; /* Ajusta o tamanho da fonte do título no banner */
+                text-align: center;
+                padding: 0 15px;
+            }
+
+            /* Ajustes para o acordeão */
+            .acordeao-botao {
+                font-size: 14px;
+                padding: 12px;
+            }
+
+            .acordeao-conteudo {
+                padding: 12px;
+            }
+
+            /* Ajustes para o botão de cronograma */
+            .botao-cronograma {
+                width: 100%; /* Torna o botão mais responsivo em dispositivos móveis */
+                padding: 12px 0;
+                font-size: 16px;
+            }
+        }

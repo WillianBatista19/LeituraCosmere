@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Resumo - Warbreaker</title>
+</head>
+<body>
+    <!-- Banner Dinâmico -->
+    <div class="banner-lc" id="bannerLC" style="background-image: url('/images/BGWarbreaker.webp');">
+        <div class="banner-overlay">
+            <div class="banner-conteudo">
+                <h1>Resumos de Warbreaker</h1>
+            </div>
+        </div>
+    </div>
+
+    <!-- Conteúdo da página -->
+    <div class="container container-resumos">
+        <div class="acordeao">
+            <button class="acordeao-botao">Dia 1 - Capítulos Iniciais</button>
+            <div class="acordeao-conteudo">
+                <p>Resumo específico dos primeiros capítulos de Warbreaker...</p>
+            </div>
+        </div>
+        
+        <div class="acordeao">
+            <button class="acordeao-botao">Dia 2 - Personagens Principais</button>
+            <div class="acordeao-conteudo">
+                <p>Discussão sobre personagens...</p>
+            </div>
+        </div>
+
+        <a href="/" class="botao-cronograma">Voltar para a Tela Inicial</a>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Configuração do acordeão
+            const acordeaoBotoes = document.querySelectorAll('.acordeao-botao');
+            acordeaoBotoes.forEach(botao => {
+                botao.addEventListener('click', function() {
+                    this.classList.toggle('ativo');
+                    const conteudo = this.nextElementSibling;
+                    conteudo.style.display = conteudo.style.display === 'block' ? 'none' : 'block';
+                });
+            });
+        });
+    </script>
+</body>
+</html>

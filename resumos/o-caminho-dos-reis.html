@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Resumo - CDR</title>
+</head>
+<body>
+    <!-- Banner Dinâmico -->
+    <div class="banner-lc" id="bannerLC" style="background-image: url('https://www.nuketown.com/wp-content/uploads/2014/04/the-way-of-kings-feature.jpg');">
+        <div class="banner-overlay">
+            <div class="banner-conteudo">
+                <h1>Resumos de O Caminho Dos Reis</h1>
+            </div>
+        </div>
+    </div>
+
+    <!-- Conteúdo da página -->
+    <div class="container container-resumos">
+        <div class="acordeao">
+            <button class="acordeao-botao">Dia 1 - Capítulos Iniciais</button>
+            <div class="acordeao-conteudo">
+                <p>Resumo específico dos primeiros capítulos de O Caminho dos Reis...</p>
+            </div>
+        </div>
+        
+        <div class="acordeao">
+            <button class="acordeao-botao">Dia 2 - Personagens Principais</button>
+            <div class="acordeao-conteudo">
+                <p>Discussão sobre Kaladin, Dalinar e outros personagens...</p>
+            </div>
+        </div>
+        <a href="/" class="botao-cronograma">Voltar para a Tela Inicial</a>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Configuração do acordeão
+            const acordeaoBotoes = document.querySelectorAll('.acordeao-botao');
+            acordeaoBotoes.forEach(botao => {
+                botao.addEventListener('click', function() {
+                    this.classList.toggle('ativo');
+                    const conteudo = this.nextElementSibling;
+                    conteudo.style.display = conteudo.style.display === 'block' ? 'none' : 'block';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
