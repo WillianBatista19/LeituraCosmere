@@ -129,6 +129,31 @@
             background-color: #9a5b3e;
         }
 
+        /* Estilo para as quotes */
+        .quote {
+            font-style: italic;
+            margin: 15px 0;
+            padding: 10px 15px;
+            border-left: 3px solid #aaa; /* Borda discreta */
+            background-color: rgba(0, 0, 0, 0.05); /* Fundo translúcido */
+        }
+        
+        /* Estilo para a referência de página */
+        .quote .page {
+            font-size: 0.9em;
+            color: #777; /* Cor mais clara para a numeração */
+        }
+        
+        /* Imagens com tamanho fixo */
+        .img-fixed {
+            display: block;
+            max-width: 100%; /* Evita que exceda o tamanho do acordeão */
+            height: auto;
+            max-height: 200px; /* Limita a altura máxima */
+            margin: 10px auto; /* Centraliza a imagem */
+        }
+
+
         /* Media Queries para dispositivos móveis */
         @media (max-width: 768px) {
             /* Ajuste no título */
