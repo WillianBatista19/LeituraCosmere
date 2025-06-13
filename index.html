@@ -26,7 +26,7 @@
         <div class="banner-overlay">
             <div class="banner-conteudo">
                 <h1 id="tituloLivroAtual"></h1>
-                <p>Leitura Coletiva Atual</p>
+                <p>Leitura Atual</p>
             </div>
         </div>
     </div>
@@ -37,11 +37,11 @@
             <table id="cronogramaLeitura" style="width:100%; color: var(--cor-texto-primaria);">
                 <!-- Cronograma será preenchido via JavaScript -->
             </table>
-            <a href="resumos/warbreaker.html" class="botao-cronograma">Ver Resumos</a>
+            <a href="resumos/mistborn.html" class="botao-cronograma">Ver Resumos</a>
         </section>
 
         <section class="secao">
-            <h2 class="secao-titulo">Leituras Coletivas Anteriores</h2>
+            <h2 class="secao-titulo">Leituras Anteriores</h2>
             <div class="grid-livros" id="lcAnteriores">
                 <!-- Livros anteriores serão preenchidos via JavaScript -->
             </div>
@@ -65,13 +65,20 @@
     <script>
         const livros = {
             atual: {
+                    titulo: 'Mistborn: O Império Final',
+                    autor: 'Brandon Sanderson',
+                    capa: 'https://m.media-amazon.com/images/I/61oP2JqzhTL._SL1000_.jpg',
+                    sinopse: 'Primeiro livro da trilogia Mistborn',
+                    banner: './images/mistbanner.jpeg',
+                },
+            anteriores: [
+                {
                     titulo: 'Sacramentadora',
                     autor: 'Brandon Sanderson',
                     capa: 'https://m.media-amazon.com/images/I/81YyIxG2wyL._SL1500_.jpg',
                     sinopse: 'Terceiro livro da série Arquivo das Tempestades.',
                     banner: './images/BGSacramentadora.jpg',
                 },
-            anteriores: [
                 {
                     titulo: 'Warbreaker',
                     autor: 'Brandon Sanderson',
@@ -95,27 +102,27 @@
             ordemLeitura: [
                 { 
                     titulo: 'O império final', 
-                    capa: 'https://m.media-amazon.com/images/I/91YMAbLoOVL._SL1500_.jpg',
+                    capa: 'https://m.media-amazon.com/images/I/61oP2JqzhTL._SL1000_.jpg',
                     sinopse: 'Primeiro livro da trilogia Mistborn',
-                    traduzido: true
+                    traduzido: false
                 },
                 { 
                     titulo: 'O poço da ascensão', 
-                    capa: 'https://m.media-amazon.com/images/I/91ncrOvnjnL._SL1500_.jpg',
+                    capa: 'https://m.media-amazon.com/images/I/61Xy+u+qF8L._SL1000_.jpg',
                     sinopse: 'Segundo livro da trilogia Mistborn',
-                    traduzido: true
+                    traduzido: false
                 },
                 { 
                     titulo: 'O heróis das eras', 
-                    capa: 'https://m.media-amazon.com/images/I/61pTigfMMaL._SL1000_.jpg',
+                    capa: 'https://m.media-amazon.com/images/I/61MAx1SPLfL._SL1000_.jpg',
                     sinopse: 'Terceiro livro da trilogia Mistborn',
-                    traduzido: true
+                    traduzido: false
                 },
                 { 
                     titulo: 'The Eleventh Metal', 
                     capa: 'https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1659766270i/22823333.jpg',
                     sinopse: 'Conto presente em: Arcanum Unbounded: The Cosmere Collection.',
-                    traduzido: false 
+                    traduzido: false
                 },
                 { 
                     titulo: 'Elantris', 
@@ -127,13 +134,13 @@
                     titulo: 'The Hope of Elantris', 
                     capa: 'https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1661025414i/10852065.jpg',
                     sinopse: 'Conto: Elantris #1.5',
-                    traduzido: false 
+                    traduzido: true
                 },
                 { 
                     titulo: "The Emperor's Soul" , 
                     capa: 'https://m.media-amazon.com/images/I/91ibY7Ik4wL._SL1500_.jpg',
                     sinopse: 'Conto: Elantris',
-                    traduzido: false 
+                    traduzido: true 
                 },
                 { 
                     titulo: 'Warbreaker: O sopro dos deuses', 
@@ -146,19 +153,19 @@
                     titulo: 'A liga da lei', 
                     capa: 'https://m.media-amazon.com/images/I/71rO9YgTk1L._SL1000_.jpg',
                     sinopse: 'Primeiro livro da segunda era de Mistborn',
-                    traduzido: true
+                    traduzido: false
                 },
                 { 
                     titulo: 'As sombras de si mesmo', 
                     capa: 'https://m.media-amazon.com/images/I/71bjBM42gvL._SL1000_.jpg',
                     sinopse: 'Segundo livro da segunda era de Mistborn',
-                    traduzido: true
+                    traduzido: false
                 },
                 { 
                     titulo: 'Os braceletes da perdição', 
                     capa: 'https://m.media-amazon.com/images/I/71XRJX79bDL._SL1000_.jpg',
                     sinopse: 'Terceiro livro da segunda era de Mistborn',
-                    traduzido: true
+                    traduzido: false
                 },
                 { 
                     titulo: 'Allomancer Jak and the Pits of Eltania', 
@@ -176,7 +183,7 @@
                     titulo: 'Shadows for Silence in the Forests of Hell', 
                     capa: 'https://m.media-amazon.com/images/I/81-TqssCMmL._SL1500_.jpg',
                     sinopse: 'Conto presente em: Arcanum Unbounded: The Cosmere Collection.',
-                    traduzido: false
+                    traduzido: true
                 },
                 { 
                     titulo: 'White Sand', 
@@ -206,7 +213,7 @@
                     titulo: 'Edgedancer',
                     capa: 'https://m.media-amazon.com/images/I/81SuJQI8uNL._SL1500_.jpg',
                     sinopse: 'The Stormlight Archive #2.5',
-                    traduzido: false
+                    traduzido: true
                 },
                 {
                     titulo: 'Sacramentadora',
@@ -218,7 +225,7 @@
                     titulo: 'Dawnshard',
                     capa: 'https://m.media-amazon.com/images/I/81Ox9WrOojL._SL1500_.jpg',
                     sinopse: 'The Stormlight Archive #3.5',
-                    traduzido: false
+                    traduzido: true
                 },
                 {
                     titulo: 'Rhythm of War',
@@ -268,44 +275,44 @@
         const cronograma = [
             { 
                 semana: 1, 
-                paginas: '1-100', 
-                datas: '02/12 - 07/12',
-                tema: 'Introdução ao mundo de Warbreaker'
+                paginas: '-', 
+                datas: '-',
+                tema: 'Introdução'
             },
             { 
                 semana: 2, 
-                paginas: '101-203', 
-                datas: '09/12 - 14/12',
-                tema: 'Desenvolvimento dos personagens'
+                paginas: '-', 
+                datas: '-',
+                tema: '-'
             },
             { 
                 semana: 3, 
-                paginas: '204-309', 
-                datas: '16/02 - 21/02',
-                tema: 'Continuando o desenvolvimento'
+                paginas: '-', 
+                datas: '-',
+                tema: '-'
             },
             { 
                 semana: 4, 
-                paginas: '310-410', 
-                datas: '23/12 - 28/12',
-                tema: 'Sonhos, tempestades e uma pantera vermelha'
+                paginas: '-', 
+                datas: '-',
+                tema: '-'
             },
             { 
                 semana: 5, 
-                paginas: '411-502', 
-                datas: '30/12 - 04/01',
-                tema: 'Meta Atual'
+                paginas: '-', 
+                datas: '-',
+                tema: '-'
             },
             { 
                 semana: 6, 
-                paginas: '503-600', 
-                datas: '06/01 - 11/01',
-                tema: 'Em breve'
+                paginas: '-', 
+                datas: '-',
+                tema: '-'
             },
             { 
                 semana: 7, 
-                paginas: '601-692', 
-                datas: '13/01 - 18/01',
+                paginas: '-', 
+                datas: '-',
                 tema: 'Final'
             },
         ];
@@ -360,7 +367,7 @@
                 <div class="card-livro-info">
                     <h3>${livro.titulo}</h3>
                     ${comTraduzido ? 
-                        `<p>${livro.traduzido ? 'Traduzido' : 'Não Traduzido'}</p>` : 
+                        `<p>${livro.traduzido ? 'Lido' : 'Não Lido'}</p>` : 
                         ''
                     }
                 </div>
